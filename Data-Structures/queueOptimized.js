@@ -27,7 +27,7 @@ class QueueOptimized{
     }
 
     peek(){
-        return this.#map.get(this.front)
+        return this.#map.size ? this.#map.get(this.front) : -1
     }
 }
 
@@ -38,6 +38,7 @@ queueOptimized.enqueue("jerry");
 
 console.log(queueOptimized.print());
 
+queueOptimized.dequeue()
 queueOptimized.dequeue()
 
 console.log(queueOptimized.print());

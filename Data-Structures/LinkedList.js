@@ -37,7 +37,7 @@ class LinkedList{
   // O(n) linear compleity
   append(val){
     if(this.isEmpty()){
-       this.prepend(val)
+       return this.prepend(val)
     }
     const node = new Node(val);
     this.size++;
@@ -92,25 +92,44 @@ class LinkedList{
     this.size--;
   }
 
-  remove(index){
-    if(index === 0){
+  // remove(index){
+  //   if(index === 0){
+  //       this.removeFirst()
+  //   }
+  //   let nextNode = this.head;
+  //   let firstPart;
+  //   let secondPart;
+  //   for(let i = 0; i<this.size; i++){
+  //       if(index-1 == i){
+  //         firstPart = nextNode;     
+  //         secondPart = nextNode.next.next;     //
+  //         firstPart.next = secondPart;
+  //         nextNode = firstPart;
+  //         break;
+  //       }
+  //       nextNode = nextNode.next;
+  //   }
+  //   this.size--;
+  // }
+
+    remove(index){
+    if(index<0 || index>this.size-1) return null  
+    if(index === 0 || this.size==1){
         this.removeFirst()
     }
-    let nextNode = this.head;
-    let firstPart;
-    let secondPart;
-    for(let i = 0; i<this.size; i++){
-        if(index-1 == i){
-          firstPart = nextNode;     
-          secondPart = nextNode.next.next;     //
-          firstPart.next = secondPart;
-          nextNode = firstPart;
+    let current = this.head;   //oth index
+    let finalNodes;
+    for(let i = 1; i<this.size; i++){
+        if(index == i){
+          finalNodes = current;     
+          finalNodes.next = finalNodes.next.next;     //
           break;
         }
-        nextNode = nextNode.next;
+        current = current.next;
     }
     this.size--;
   }
+
 
   removeByValue(value){
      let current = this.head;                //cc
@@ -164,13 +183,12 @@ class LinkedList{
   getValue(){
      if(this.isEmpty()) return null
      let nextNode = this.head;  
-    //  let listValue = ''
+     let listValue = ''
      while(nextNode){
-    //    listValue += `${nextNode.value}`
-     console.log(nextNode.value)
+      listValue += `${nextNode.value}`
       nextNode = nextNode.next;  
      }
-    //  return listValue;
+    console.log(listValue)
   }
 
   printHead(){
@@ -211,11 +229,11 @@ const list = new LinkedList()
 // console.log(list.reverseList())
 // list.getValue();
 
-list.insertWithTail(1)
-console.log(list.head);
+// list.insertWithTail(1)
+// console.log(list.head);
 
-list.insertWithTail(2)
-console.log(list.head);
+// list.insertWithTail(2)
+// console.log(list.head);
 
 
 
@@ -224,17 +242,29 @@ console.log(list.head);
 
 
 
-list.prepend(0)
-console.log(list.head);
+// list.prepend(0)
+// console.log(list.head);
 
-list.insertWithTail(3)
-console.log(list.head);
+// list.insertWithTail(3)
+// console.log(list.head);
 
-list.insertWithTail(6)
-console.log(list.head);
+// list.insertWithTail(6)
+// console.log(list.head);
 
-list.insertWithTail(7)
-console.log(list.head);
+// list.insertWithTail(7)
+// console.log(list.head);
 
+
+list.append(1);
+list.append(2);
+list.append(3);
+list.append(4);
+list.append(5);
+list.printHead()
 list.getValue();
 
+list.remove(2)
+list.getValue();
+
+list.remove(2)
+list.getValue();
