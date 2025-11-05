@@ -7,12 +7,12 @@ class QueueOptimized{
     }
 
     enqueue(elem){
-        this.#map.set(this.rear, elem)
+        this.#map.set(this.rear, elem)       //0, a //1,b //2,c
         this.rear++;
     }
 
     dequeue(){
-        let val =  this.#map.get(1);
+        let val =  this.#map.get(this.front);   
         this.#map.delete(this.front);
         this.front++;
         return val;

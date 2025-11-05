@@ -5,11 +5,11 @@ class Queue{
       this.publicVar = []
     }
 
-    unshift(num){
+    enqueue(num){
       this.#queueArr.push(num)
     } 
 
-    shift(){
+    dequeue(){
       this.#queueArr.shift()
     }
 
@@ -20,8 +20,8 @@ class Queue{
 }
 
 const queue =  new Queue();
-queue.unshift(1);
-queue.unshift(0);
+queue.enqueue(1);
+queue.enqueue(0);
 console.log(queue.getAll())
-queue.shift();
+queue.dequeue();
 console.log(queue.getAll())
